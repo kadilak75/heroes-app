@@ -1,0 +1,10 @@
+<h1 mat-dialog-title style="color: red;"><b>Aviso</b></h1>
+<div mat-dialog-content >
+  Estas Seguro de que quieres borrar el Heroe {{data.superhero}}?
+</div>
+<div mat-dialog-actions align="center">
+    <!-- <mat-dialog-actions align="end">  este tag agrega un scrollbar--> 
+        <button mat-raised-button (click)="cerrar()" color="primary">No</button>
+        <button mat-raised-button (click)="borrar()" color="warn">Si</button>
+      <!-- </mat-dialog-actions> -->
+</div>

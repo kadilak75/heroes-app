@@ -1,0 +1,125 @@
+
+<h1>{{heroe | nombre }}  </h1> 
+
+<!-- Primera fila donde va el input y a la derecha la imagen -->
+<div fxLayout="row" 
+fxLayoutGap="40px"
+fxLayout.xs="column">
+<!-- la primera fila esta separada en dos columnas super Heroe y alter ego  -->
+    <div fxLayout="column" 
+    fxFlex="50"
+    >
+<!-- y estas dos columnas estan en una misma fila -->
+        <div fxLayout="row" fxLayoutGap="20" fxLayout.xs="column">         
+        
+        <mat-form-field fxFlex="100" fxLayout.xs="column">
+            <mat-label> Super Heroe </mat-label>
+                
+                <input matInput
+                [(ngModel)]="heroe.superhero"
+                type="text"
+                required>
+            
+        </mat-form-field>
+
+        <mat-form-field fxFlex="100">
+            <mat-label>Alter Ego</mat-label>
+            
+                <input matInput
+                [(ngModel)]="heroe.alter_ego"
+                type="text"
+                required>
+            
+        </mat-form-field>
+
+    </div>
+<!-- a partir de aqui se termina la primera fila con dos columnas y lo que sigue son filas unicas -->
+    <mat-form-field fxFlex="">
+        <mat-label>Primera aparición</mat-label>
+        
+            <input matInput
+            [(ngModel)]="heroe.first_appearance"
+            type="text"
+            required>
+        
+    </mat-form-field>
+
+
+    <mat-form-field fxFlex="">
+        <mat-label>Personajes</mat-label>
+        
+            <input matInput
+            [(ngModel)]="heroe.characters"
+            type="text"
+            required>
+        
+    </mat-form-field>
+
+    <mat-form-field fxFlex="">
+        <mat-label>Creador</mat-label>
+        
+            <mat-select
+            [(ngModel)]="heroe.publisher"
+            required>
+                <!-- value en mat-option se refiere al valor por defecto que va a aparecer en las opciones
+                esto va a ser para cuando leamos un heroe que ya esté creado aparezca automaticamente
+                el publisher con el que se creó el heroe -->
+                <mat-option
+                
+                *ngFor=" let publisher of publishers"
+                [value]="publisher.id"
+                required="true">
+                {{publisher.desc}}
+            </mat-option>
+            </mat-select>
+        
+    </mat-form-field>
+
+    <mat-form-field fxFlex="">
+        <mat-label>URL de la imagen</mat-label>
+        
+            <input matInput
+            [(ngModel)]="heroe.alt_img"
+            type="url"
+            required>
+        
+    </mat-form-field>
+    
+    <div fxLayout="column" >
+        <div fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutGap="150"
+        fxLayoutGap.xs="20"
+        >
+        <button mat-raised-button color="primary"
+        (click)="guardar()" fxFlex="50" 
+        >
+            <mat-icon>edit</mat-icon>
+            Guardar
+        </button>
+
+        <!-- si el heroe no existe (no tiene id) el botón no se muestra -->
+        <button mat-raised-button
+        *ngIf="heroe.id"
+        color="warn"
+        fxFlex="50"
+        (click)="borrar()">
+        <mat-icon>remove</mat-icon>
+         Borrar
+        </button>
+        </div>
+    </div>
+
+    <div fxFlex="100"></div>
+
+
+    </div>
+
+    
+
+    <div fxFlex="100">
+        <img [src]="heroe | imagen">
+    </div>
+
+
+</div>

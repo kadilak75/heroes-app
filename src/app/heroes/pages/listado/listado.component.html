@@ -1,0 +1,46 @@
+<!-- <ul *ngFor="let item of heroes">
+    <li>{{item.superhero}}</li>
+</ul> -->
+
+<!-- fxLayout row Wrap hace que cuando la tarjeta no quepa pase a la siguiente fila -->
+<div fxLayout="row wrap"
+    fxLayoutAlign="center" 
+    fxLayoutGap="20px"
+    class="card">
+    <!--fxFlex define el tamaño de cada tarjeta en este caso de un 20% el ancho total 
+    si se coloca el ngFor en el div porque si se coloca directamente en el mat-card no coloca
+    las tarjetas una al lado de la otra-->
+    <div fxFlex="30"
+     fxFlex.lg="15"
+     fxFlex.md="30"
+     fxFlex.sm="40"
+     fxFlex.xs="100"
+     
+    *ngFor="let heroe of heroes" 
+    >
+     <app-heroe-tarjeta [heroe]="heroe"></app-heroe-tarjeta>   
+    </div>
+</div>
+
+<!-- MODELO DE TARJETA 
+
+      <mat-card >
+            
+        <mat-card-header>
+          
+          <mat-card-title></mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+
+        </mat-card-header>
+
+        <img mat-card-image alt="Photo of a Shiba Inu" >
+
+        <mat-card-content>
+       
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card> -->

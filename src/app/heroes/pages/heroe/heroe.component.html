@@ -1,0 +1,61 @@
+
+<mat-grid-list cols="1" *ngIf="hayError else Heroe">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+
+<ng-template #Heroe>
+
+  <mat-grid-list cols="2" rowHeight="1:1">
+
+    <mat-grid-tile>
+
+      <mat-card class="altura">
+            
+        <mat-card-header>
+          
+          <mat-card-title><h1>{{hero.superhero}}</h1></mat-card-title>
+         
+          <mat-card-subtitle>{{hero.alter_ego}}</mat-card-subtitle>
+    
+        </mat-card-header>
+        
+        <hr>
+
+        <mat-card-content>
+            <h3><strong>Publisher: </strong> {{hero.publisher}}</h3>
+          
+            <hr>
+            <strong>Primera aparicion: </strong>{{hero.first_appearance}}
+            <br>
+            <hr>
+            <strong>Personajes: </strong> {{hero.characters}}
+            <br>
+            <br>
+            <h3>Sinopsis:</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae eaque ullam, eos iste reprehenderit sapiente itaque? Error accusantium ab molestiae iste autem quis iure rerum tenetur, unde impedit consequuntur mollitia?</p>
+       
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [routerLink]="['/heroes/listado']">volver al listado</button>
+        </mat-card-actions>
+        
+    
+      </mat-card>
+    </mat-grid-tile>  
+
+    
+
+    
+
+    <mat-grid-tile fxFlex="100">
+      <img src="{{hero | imagen}}">
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+</ng-template>

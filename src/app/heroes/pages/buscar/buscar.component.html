@@ -1,0 +1,56 @@
+<div fxLayout="column">
+    <div>
+        <h1>Buscador de Heroes</h1>
+        <mat-divider></mat-divider>
+    </div>
+
+
+    <div fxLayout="column">
+        <h3>Buscador</h3>
+            <!-- este formfield permite hacer busquedas y muestra sugerencias -->  
+            <!-- [(ngModel)]: el ngModel ligael termino del input a una propiedad en ts con la que se realiza la busqueda-->
+            <!-- (input): cuando se hace un imput "se presiona una tecla" se hace una busqueda con este termino para 
+            poder producir una lista de sugerencias-->
+            <!-- (optionSelected): cuando se selecciona una opcion se pasa el evento "opcion seleccionada" que en este caso va a ser
+            un evento que va a contener dentro de este los valores del objeto que hemos seleccionado, estos valores los podemos recuperar
+            para poder mostrarlos luego-->
+            <!--ngFor y [value]: el enFor permite recorrer el arr de heroes-->
+
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Heroes</mat-label>
+              <input type="text"
+                     placeholder="Buscar"
+                     aria-label="Number"
+                     matInput   
+                     [(ngModel)]="termino"
+                     (input)="sugerencias()"
+                     [matAutocomplete]="auto"
+                     >
+
+                      
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                      (optionSelected)="buscar($event)">
+
+             
+                  <mat-option *ngFor="let heroe of heroes" [value]="heroe">
+                    
+                    {{heroe.superhero}}
+                   
+                  </mat-option>
+              
+              
+            
+
+              </mat-autocomplete>
+
+
+            </mat-form-field>
+    </div>
+
+    <div *ngIf="hayError; else mostrar">no se encuentra el heroe</div>
+    <ng-template #mostrar >
+
+    <pre> {{loneHero|json}} </pre>
+      
+    </ng-template>
+</div>

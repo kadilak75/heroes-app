@@ -1,0 +1,74 @@
+<!-- sidenav para pagina web con la opcion fullscreen para que ocupe todo el largo -->
+<mat-sidenav-container fullscreen>
+    <!-- #sidenav es una referencia local para poder acceder a la etiqueta y usar la opcion sidenav.toggle() mas adelante
+    mode="push indica que el boton de menu se empuja hay otros efectos en el comp" -->
+
+    <!-- en el mat-sidenav se coloca todo lo que va a aparecer una vez se despliegue la barra -->
+    <mat-sidenav #sidenav mode="push">
+        <mat-toolbar>
+            <span>Menu</span>
+            <span class="spacer"></span>
+            <button mat-mini-fab color="primary" (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+            <!-- ./listado porque ya nos encontramos en la direccion .heroes
+            el efecto toggle va a cerrar el sidenav cuando se cargue el comp -->
+            <a routerLink="./listado"
+            mat-list-item
+            (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>list</mat-icon>
+                <span>Listado de Heroes</span>
+            </a>
+
+            <a routerLink="./agregar"
+            mat-list-item
+            (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>add</mat-icon>
+                <span>Añadir Heroe</span>
+            </a>
+
+            <a routerLink="./buscar"
+            mat-list-item
+            (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>search</mat-icon>
+                <span>Buscar Heroe</span>
+            </a>
+            
+        </mat-nav-list>
+    </mat-sidenav>
+
+        <!-- el toolbar es la barra superior de nuestra app -->   
+    <mat-toolbar>
+        <!-- boton de mat, mini-fab ajusta el tamaó y el efecto (click) utiliza la referencia que pusimos mas arriba y activa el efecto toggle -->
+        <button mat-mini-fab color="primary" (click)="sidenav.toggle()">
+            <!-- coloca un icono que se llama menu -->
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span class="spacer"></span>
+
+        <span>{{user.usuario}}</span>
+        
+        <button mat-flat-button color="basic"
+        (click)="logout()">
+            <span>Logout</span>
+        </button>
+    
+    </mat-toolbar>
+
+    
+    
+
+
+<!-- el router outlet aqui adentro nos permite utilizar nuestras rutas dentro del sidenav -->
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+</mat-sidenav-container>
+
+
+  
